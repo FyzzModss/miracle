@@ -1,7 +1,7 @@
 # WhatsApp Baileys
 
 <p align="center">
-  <img src="[(https://files.catbox.moe/mx4gi6.jpg)" alt="Thumbnail" />
+  <img src="https://files.catbox.moe/mx4gi6.jpg" alt="Thumbnail" />
 </p>
 
 /*

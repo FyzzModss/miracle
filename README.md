@@ -22,7 +22,7 @@
 
   This project is NOT open-source. Unauthorized use of the code is strictly forbidden.
 
-  For collaboration or usage permissions, please contact via YouTube: fallzx-features
+  For collaboration or usage permissions, please contact via YouTube: FyzzX7
 */
 
 

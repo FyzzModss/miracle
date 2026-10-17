@@ -1,6 +1,6 @@
 {
-  "name": "miracle-baileys",
-  "version": "1.1.13",
+  "name": "miracle-xbailz",
+  "version": "1.1.16",
   "description": "WhatsApp Web API Library",
   "keywords": [
     "lilys-baileys",
@@ -45,7 +45,6 @@
     "lint:fix": "eslint lib --fix --ext .js",
     "prepack": "echo 'Miracle WhatsApp Library'",
     "prepare": "echo 'Miracle WhatsApp Library'",
-    "preinstall": "node ./engine-requirements.js",
     "release": "release-it",
     "test": "jest"
   },

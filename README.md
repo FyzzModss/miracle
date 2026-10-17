@@ -1,98 +1,154 @@
-# WhatsApp Baileys
+<div align="center">
 
-<p align="center">
-  <img src="https://files.catbox.moe/mx4gi6.jpg" alt="Thumbnail" />
-</p>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:25D366,100:075E54&height=220&section=header&text=Miracle%20Baileys&fontSize=62&fontColor=ffffff&fontAlignY=38&animation=fadeIn&desc=WhatsApp%20Multi-Device%20Library%20for%20Node.js&descSize=18&descAlignY=60" width="100%" alt="Miracle Baileys" />
 
-/*
-  ©2025 FyzzX7. All Rights Reserved.
+<a href="https://github.com/FyzzModss/miracle">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=900&color=25D366&center=true&vCenter=true&width=620&lines=Stable+pairing+%26+authentication;Custom+pairing+code+support;Interactive+messages+%26+buttons;Resilient+session+management;Built+for+production+bots" alt="Typing animation" />
+</a>
 
-  Type: Miracle-Baileys WhatsApp Bot
-  Creator: FyzzModss
-  YouTube: FyzzX7
+<br/>
 
-  PROHIBITED:
-  - Copying any part of this code without explicit permission.
-  - Selling, redistributing, or modifying the code without the author's approval.
-  - Claiming this project as your own.
+<img src="https://img.shields.io/badge/NODE.JS-%E2%89%A5%2018-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+<img src="https://img.shields.io/badge/WHATSAPP-MULTI--DEVICE-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+<img src="https://img.shields.io/badge/miracle-CB3837?style=for-the-badge&logo=npm&logoColor=white" />
+<img src="https://img.shields.io/badge/LICENSE-PROPRIETARY-0A0A0A?style=for-the-badge" />
 
-  WARNING:
-  Any act of plagiarism, data theft, or illegal redistribution of this project
-  will be subject to legal action under applicable intellectual property laws.
+<br/><br/>
 
-  This project is NOT open-source. Unauthorized use of the code is strictly forbidden.
+<img src="https://files.catbox.moe/mx4gi6.jpg" alt="Miracle Baileys" width="520" />
 
-  For collaboration or usage permissions, please contact via YouTube: FyzzX7
-*/
+</div>
 
+<br/>
 
----
+## Overview
 
-### 🚀 Key Features & Benefits
+**Miracle Baileys** is a WhatsApp multi-device client library focused on **connection reliability** and **developer experience**. It resolves common pairing and authentication failures, ships first-class interactive message support, and manages sessions automatically so long-running bots stay online.
 
-- 🔐 Flexible Pairing Options
-Supports both automatic and custom pairing methods for seamless connectivity.
+<br/>
 
-- 🛠️ Improved Stability
-Resolves previous pairing issues that caused connection failures or unexpected disconnections.
+## Features
 
-- 💬 Rich Interactive Messaging
-Enables interactive messages, action buttons, and dynamic menus for engaging user experiences.
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🛜 Pairing</h3>
+      Automatic and custom pairing code flows with fixes for failed or interrupted pairing.
+    </td>
+    <td width="50%" valign="top">
+      <h3>⚠️ Authentication</h3>
+      Hardened auth handling that reduces unexpected disconnects and re-login loops.
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <h3>💬 Interactive Messages</h3>
+      Buttons, native flows, lists, and dynamic menus out of the box.
+    </td>
+    <td valign="top">
+      <h3>♻️ Session Management</h3>
+      Automatic persistence and recovery for long-term uptime.
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <h3>🌐 Multi-Device</h3>
+      Compatible with current WhatsApp multi-device behavior.
+    </td>
+    <td valign="top">
+      <h3>📡 Lightweight</h3>
+      Minimal footprint and easy to embed into existing services.
+    </td>
+  </tr>
+</table>
 
-- 🔄 Smart Session Management
-Automatically manages sessions efficiently to ensure consistent and reliable performance.
+<br/>
 
-- 📱 Multi-Device Compatibility
-Fully compatible with the latest WhatsApp multi-device capabilities.
+## Installation
 
-- ⚙️ Lightweight & Easy Integration
-Designed to be lightweight, stable, and easy to embed into a wide range of systems.
+```bash
+npm install github:FyzzModss/miracle
+```
 
-- 🤖 Ideal for Bots & Automation
-Perfect for building chatbots, customer service automation, and full-scale communication solutions.
+> Requires **Node.js** `>= 20.0.0`
 
-- 📘 Developer-Friendly Resources
-Comes with comprehensive documentation and ready-to-use code examples to accelerate development.
+<br/>
 
----
+## Quick Start
 
-### 🚀 Getting Started
+```js
+const { default: makeWASocket, useMultiFileAuthState } = require('miracle-xbailz')
 
-Begin by installing the library via your preferred package manager, then follow the provided configuration guide. You can also utilize the ready-made example codes to understand how the features work. Use session storage and interactive messaging features to build complete, stable solutions tailored to your business or project needs.
+async function start() {
+  const { state, saveCreds } = await useMultiFileAuthState('./session')
 
----
+  const sock = makeWASocket({
+    auth: state,
+    printQRInTerminal: false
+  })
 
-### Why Choose whatsapp baileys?
+  sock.ev.on('creds.update', saveCreds)
 
-Start by installing the library using your preferred package manager. Follow the step-by-step configuration guide to set everything up quickly. Explore the included example codes to understand key features in action. Leverage session management and interactive messaging capabilities to build robust, scalable solutions tailored to your project's or business's specific needs.
+  // Request a pairing code for an unregistered session
+  if (!sock.authState.creds.registered) {
+    const code = await sock.requestPairingCode('628xxxxxxxxxx')
+    console.log('Pairing code:', code)
+  }
 
----
+  sock.ev.on('messages.upsert', async ({ messages }) => {
+    const m = messages[0]
+    if (!m.message || m.key.fromMe) return
+    await sock.sendMessage(m.key.remoteJid, { text: 'Hello from Miracle Baileys' })
+  })
+}
 
-## ✨ Fitur Unggulan
+start()
+```
 
-• ✅ Supports custom pairing codes that are stable and secure
-Mendukung kode pairing kustom yang stabil dan aman untuk koneksi WhatsApp.
+<br/>
 
-• 🛠️ Fixes previous issues related to pairing and authentication
-Telah diperbaiki dari berbagai masalah sebelumnya terkait pairing dan otentikasi.
+## Use Cases
 
-• 💬 Features interactive messages and action buttons for dynamic menu creation
-Menyediakan fitur pesan interaktif dan tombol aksi untuk membuat menu dinamis dengan mudah.
+- Customer support and order-handling bots
+- Notification and alerting pipelines
+- Multi-session bot platforms
+- Internal automation and workflow tooling
 
-• 🔄 Automatic and efficient session management for long-term stability
-Manajemen sesi otomatis dan efisien untuk kestabilan penggunaan jangka panjang.
+<br/>
 
-• 📱 Compatible with the latest multi-device features from WhatsApp
-Kompatibel dengan fitur multi-perangkat terbaru dari WhatsApp.
+## Tech Stack
 
-• ⚙️ Easy to integrate and customize based on your needs
-Mudah diintegrasikan dan dikustomisasi sesuai kebutuhan pengembanganmu.
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=nodejs,js,npm,git,github&theme=dark" />
+</div>
 
-• 🤖 Perfect for developing bots, customer service automation, and other communication applications
-Cocok untuk membuat bot, otomatisasi layanan pelanggan, atau aplikasi komunikasi lainnya.
+<br/>
 
----
+## Project Structure
 
-📚 For full documentation, installation instructions, and usage examples, please refer to the official GitHub repository and join the community discussions. This project is actively maintained and continuously improved to support developers building modern WhatsApp automation solutions.
+```
+miracle/
+├── lib/         Core library source
+├── WAProto/     WhatsApp protocol definitions
+├── LICENSE
+└── package.json
+```
 
-🙏 Thank you for choosing WhatsApp Baileys as your trusted tool for WhatsApp automation. We appreciate your support!
+<br/>
+
+## Contact
+
+<div align="center">
+  <a href="https://www.youtube.com/@FyzzX7"><img src="https://img.shields.io/badge/Youtube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" /></a>
+  <a href="https://github.com/FyzzModss"><img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+</div>
+
+<br/>
+
+## License
+
+Copyright © 2025 FyzzX7. All rights reserved.
+
+This project is **proprietary and not open source**. You may not copy, modify, redistribute, sell, or claim this software as your own without the author's explicit written permission. Unauthorized use may result in legal action under applicable intellectual property law. See [`LICENSE`](./LICENSE).
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:075E54,100:25D366&height=120&section=footer" width="100%" alt="" />
